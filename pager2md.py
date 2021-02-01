@@ -4,6 +4,7 @@ import re
 import requests
 import arrow
 import click
+import markdown
 
 
 def fetch_note(incident_id, apikey):
@@ -21,6 +22,7 @@ def fetch_note(incident_id, apikey):
 
 
 @click.command()
+@click.option("--html", is_flag=True, help="Print in html")
 @click.option("--teamid", required=True)
 @click.option("--start", required=True, help="The date format in 2021-01-28T03:30:21")
 @click.option("--duration", required=True, help="Duration for this query in hours")
@@ -45,7 +47,10 @@ def main(**kwargs):
         output.append(
             f"|{i['created_at']}|{i['title'].strip()}|{i['status']}|{fetch_note(i['id'], apikey)}|"
         )
-    print("\n".join(output))
+    if kwargs.get('html'):
+        print(markdown.markdown("\n".join(output) , extensions=['tables']))
+    else:
+        print("\n".join(output))
 
 
 if __name__ == "__main__":
