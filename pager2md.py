@@ -47,8 +47,8 @@ def main(**kwargs):
         output.append(
             f"|{i['created_at']}|{i['title'].strip()}|{i['status']}|{fetch_note(i['id'], apikey)}|"
         )
-    if kwargs.get('html'):
-        print(markdown.markdown("\n".join(output) , extensions=['tables']))
+    if kwargs.get("html"):
+        print(markdown.markdown("\n".join(output), extensions=["tables"]))
     else:
         print("\n".join(output))
 
