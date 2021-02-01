@@ -7,6 +7,7 @@ Usage: pager2md.py [OPTIONS]
 
 Options:
   --html           Print in html
+  --graph          The oncall graph
   --teamid TEXT    [required]
   --start TEXT     The date format in 2021-01-28T03:30:21  [required]
   --duration TEXT  Duration for this query in hours  [required]
