@@ -39,7 +39,7 @@ def main(**kwargs):
     start = arrow.get(kwargs.get("start")).format("YYYY-MM-DDTHH:mm:ss")
     teamid = kwargs.get("teamid")
     apikey = kwargs.get("apikey")
-    url = f"https://api.pagerduty.com/incidents?total=false&team_ids[]={teamid}&time_zone=UTC&since={start}Z&until={end}Z"
+    url = f"https://api.pagerduty.com/incidents?limit=999&team_ids[]={teamid}&time_zone=UTC&since={start}Z&until={end}Z"
     pageroutput = requests.get(
         url, headers={"authorization": f"Token token={apikey}"}
     ).json()
